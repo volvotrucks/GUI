@@ -1,0 +1,7 @@
+gui file require libraries
+from tkinter import*
+import sqlite3
+from tkinter import ttk
+from openpyxl.workbook import Workbook 
+from openpyxl import load_workbook 
+
