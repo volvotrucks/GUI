@@ -52,7 +52,7 @@ Label9.grid(row=7, column=0, sticky='w')
 # Product Class
 var1 = StringVar()
 VC = ttk.Combobox(wrapper, textvariable = var1, width=15)
-VC["values"] = [" ",
+'''VC["values"] = [" ",
 'VS-LHAUL,FST-PAR,FSC5.4',
 'VS-LHAUL,FST-PAR,FSC5.7',
 'VS-LHAUL,FST-PAR,FSC6.0',
@@ -68,16 +68,16 @@ VC["values"] = [" ",
 'VS-RHAUL,FST-PAR7,FSC5.4',
 'VS-RHAUL,FST-PAR7,FSC5.7',
 'VS-RHAUL,FST-PAR7,FSC6.0',
-'VS-RHAUL,FST-PAR7,FSC6.6',]
+'VS-RHAUL,FST-PAR7,FSC6.6',]'''
 VC.grid(row=3, column=3, padx=10, pady=10)
-VC.current(0) 
+
 
 # Front Installation
 var2 = StringVar()
 FI = ttk.Combobox(wrapper, textvariable = var2, width=15)
-FI["values"] = [" ","FIH185","FIH220",]
+'''FI["values"] = [" ","FIH185","FIH220",]'''
 FI.grid(row=2, column=3, padx=10, pady=10)
-FI.current(0) 
+
 # Front Installation
 var4 = StringVar()
 AH = ttk.Combobox(wrapper, textvariable = var4, width=15)
@@ -177,8 +177,33 @@ gy_dim = list1
 Bridg_dim = list2
 Cont_dim = list3
 Yoko_dim = list4
+def pick_pc(event):
+	if PC.get() == "B1, B2":
+		FI.config(value = [" ","FIH185","FIH220",])
+	if  FI.get() == "FIH185":
+		VC.config(value  = [" ",
+'VS-LHAUL,FST-PAR,FSC5.4',
+'VS-LHAUL,FST-PAR,FSC6.0',
+'VS-LHAUL,FST-PAR,FSC6.6',
+'VS-LHAUL,FST-PAR7,FSC5.4',
+'VS-LHAUL,FST-PAR7,FSC5.7',
+'VS-LHAUL,FST-PAR7,FSC6.0',
+'VS-LHAUL,FST-PAR7,FSC6.6',
+'VS-RHAUL,FST-PAR,FSC5.4',
+'VS-RHAUL,FST-PAR,FSC5.7',
+'VS-RHAUL,FST-PAR,FSC6.0',
+'VS-RHAUL,FST-PAR,FSC6.6',
+'VS-RHAUL,FST-PAR7,FSC5.4',
+'VS-RHAUL,FST-PAR7,FSC5.7',
+'VS-RHAUL,FST-PAR7,FSC6.0',
+'VS-RHAUL,FST-PAR7,FSC6.6',])
+	elif( FI.get() == "FIH220"):
+		VC.config(value = 'VS-LHAUL,FST-PAR,FSC5.7')
 
 
+PC.bind("<<ComboboxSelected>>", pick_pc)
+FI.bind("<<ComboboxSelected>>", pick_pc)
+VC.bind("<<ComboboxSelected>>", pick_pc)
 def pick_man(event):
 
 	if Manufacturing.get() == "Michelin":
@@ -434,9 +459,6 @@ def pick_man(event):
 
 # Clear combox but not values
 def clear1():
-
-	PC.set('') 
-	PC.config(value=[' ',])
 	VC.set('') 
 	VC.config(value = [ ' ',])
 	FI.set('') 
