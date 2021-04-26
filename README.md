@@ -12,7 +12,7 @@ git clone <repo-url>
 pip install -r requirements.txt
 ```
 
-## Files descrition
+## Files description
 - The form.db file is the database that contain the password and user name of whoever registered an accoun. Data here depends
 on the registration app
 - The Dim_mich.xlsx file contains the dimensions for the manufactoring that is run in the gui 
